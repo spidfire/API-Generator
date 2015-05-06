@@ -6,6 +6,9 @@
             "email": "composer@djur.re"
         }
     ],
+    "autoload":{
+    	"classmap": ["src/"]
+    },
     "require": {},
     "bin": ["bin/apidocumentation.php"]
 }

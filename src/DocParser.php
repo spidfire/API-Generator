@@ -1,6 +1,5 @@
 <?php
 
-include("DocParserStorage.php");
 
 class DocParser{
 	var $storage = null;

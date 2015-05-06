@@ -1,6 +1,6 @@
 <?php
 
-    include("src/DocParser.php");
+    include("vendor/autoload.php");
     $files = array();
     if(empty($argv) || count($argv) < 2){
         $files = glob(__DIR__."/examples/*.php");
@@ -20,7 +20,6 @@
         }
     }
 
-    include("src/DocShowApi.php");
     $a = new DocShowApi($dock->getStorage());
     echo $a->render();
 
