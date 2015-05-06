@@ -10,10 +10,11 @@ class DocParser{
 	function nextFile($filename){
 		$this->storage->addItem("file",$filename);
 	}
-	function nextDoc($doc_array){
+	function nextDoc($doc_array,$extra_attr=array()){
 		list($full,$doc,$code) = $doc_array;
 
 		$attr = $this->getAttributes($doc);
+		$attr = array_merge($extra_attr,$attr);
 		foreach ($attr as $key => $value) {
 			$this->storage->addItem($value[0],$value[1]);
 		}

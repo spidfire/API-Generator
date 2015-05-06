@@ -2,15 +2,21 @@
 
     include("src/DocParser.php");
     $files = array();
-
-    $files = array_merge($files,glob("examples/*.php"));
+    if(empty($argv) || count($argv) < 2){
+        $files = glob(__DIR__."/examples/*.php");
+    }else{
+        // cli
+        $own = array_shift($argv);
+        $files = array_merge($files,$argv);
+        
+    }
     $dock = new DocParser();
     foreach ($files as $key => $value) {
         $data = file_get_contents($value);
         preg_match_all("/\\/\\*\\*(.*?)\\*?\\*(\\/)/is", $data, $matches,PREG_SET_ORDER);
         $dock->nextFile($value);
         foreach ($matches as $key => $doc) {
-            $dock->nextDoc($doc);
+            $dock->nextDoc($doc,array("file"=>$value));
         }
     }
 

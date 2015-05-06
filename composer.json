@@ -1,0 +1,11 @@
+{
+    "name": "spidfire/api-generator",
+    "authors": [
+        {
+            "name": "Djurre de Boer",
+            "email": "composer@djur.re"
+        }
+    ],
+    "require": {},
+    "bin": ["bin/apidocumentation.php"]
+}

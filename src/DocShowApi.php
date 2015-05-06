@@ -15,7 +15,7 @@ class DocShowApi{
 			$output .= '<div class="apiitem" id="item'.$value['_id'].'" style="display:none">';
 			$output .= '<h1>';
 			$output .= $this->method_label(ex_el($value['http_method'],'???'))." ";
-			$output .= $this->shortUrl($value['url']);
+			$output .= $this->shortUrl(empty($value['url']) ? "NO URL FOUND": $value['url']);
 			$output .= '</h1>';
 			if(isset($value['description'])){
 				$output .= '<blockquote>'.$value['description'].'</blockquote>';				
@@ -133,7 +133,7 @@ class DocShowApi{
 	// utilities
 	function shortUrl($var){
 		preg_match("/^https?:\\/\\/.*?(\\/.*)$/", $var,$reg);
-		return $reg[1];
+		return empty($reg[1]) ? $var : $reg[1] ;
 	}
 	function method_label($method){
 		$output = '';
